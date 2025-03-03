@@ -100,7 +100,7 @@ LIMIT 5;
 
 ```sql
 # visitors who bought on a return visit (could have bought on first as well
-```
+
 WITH all_visitor_stats AS (
 SELECT
   fullvisitorid, # 741,721 unique visitors
@@ -108,13 +108,15 @@ SELECT
   FROM `data-to-insights.ecommerce.web_analytics`
   GROUP BY fullvisitorid
 )
-
+```
+```sql
 SELECT
   COUNT(DISTINCT fullvisitorid) AS total_visitors,
   will_buy_on_return_visit
 FROM all_visitor_stats
 GROUP BY will_buy_on_return_visit
 ```
+
 ```sql
 SELECT
   * EXCEPT(fullVisitorId)
